@@ -1,38 +1,84 @@
-.App {
-  text-align: center;
+h1 {
+  text-align: left;
+  font-weight: 600;
+  display: block;
+  background-color: #E6D8CB;
+  padding: 2rem 1rem;
+  margin-top: 0
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+.main {
+  background-color: #F1EFE9;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   min-height: 100vh;
+  font-size: 16px;
+}
+
+.home-page {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  padding: 2rem;
+  height: 100%;
 }
 
-.App-link {
-  color: #61dafb;
+.home-page .search-bar {
+  margin-bottom: 5rem;
+  display: flex;
+  flex: auto;
+  width: 80%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.home-page .search-bar input {
+  border-radius: 20px;
+  padding: 15px;
+  width: 100%;
+}
+
+.home-page .search-bar button {
+  border-radius: 100%;
+  padding: 15px;
+  background-color: #C7F2B9;
+  border: 1px solid white;
+  margin-left: 5px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.image-tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-gap: 1rem;
+  width: 100%;
+  overflow: hidden;
+}
+
+.image-tiles a {
+  display: inline-block;
+}
+
+.tags .tag {
+  display: inline;
+  padding: 5px;
+  margin: 5px;
+  background-color: #C7F2B9;
+  border-radius: 5px;  
+}
+
+.image-preview-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  height: 100%;
+}
+
+button {
+  padding: 5px 10px;
+  background-color: white;
+  border-radius: 10px;
+  cursor: pointer;
 }
