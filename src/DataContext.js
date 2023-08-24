@@ -10,7 +10,7 @@ export const DataProvider = ({ children }) => {
   const [searchResults, setSearchResults] = useState({});
   const [searchQuery, setSearchQuery] = useState('');
   const [pageNumber, setPageNumber] = useState(1);
-  const [totalPageNumber, setTotalPageNumber] = useState(1);
+  const [totalPageNumber, setTotalPageNumber] = useState(null);
 
   const value = {
     searchResults,

@@ -52,15 +52,16 @@ const Home = () => {
       <SearchBar onSearchSubmit={queryForImages} lastSearchQuery={searchQuery} />
 
       {loading && <div>Loading...</div>}
-      {searchResults && searchResults.length > 0 && (
+      {searchResults?.length > 0 && (
         <>
           <ImageTiles images={searchResults} />
           <div className="pagination">
-            {pageNumber > 1 ? <button onClick={() => onPreviousClick()}>Previous</button> : null}
-            {pageNumber < totalPageNumber ? <button onClick={() => onNextClick()}>Next</button> : null}
+            {pageNumber > 1 && <button onClick={() => onPreviousClick()}>Previous</button>}
+            {pageNumber < totalPageNumber && <button onClick={() => onNextClick()}>Next</button>}
           </div>
         </>
       )}
+      {searchResults?.length === 0 && "No results found"}
     </div>
   )
 }
