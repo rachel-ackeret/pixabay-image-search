@@ -7,7 +7,7 @@ const refineSearchQuery = (searchQuery) => {
 }
 
 // Get search results from Pixabay API
-export const getPixabaySearch = async (searchQuery, page=1) => {
+export const getPixabaySearch = async (searchQuery, page) => {
     const refinedSearchQuery = refineSearchQuery(searchQuery)
     const queryParams = {
         key: PIXABAY_KEY,

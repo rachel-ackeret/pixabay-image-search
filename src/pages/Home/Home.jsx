@@ -22,7 +22,7 @@ const Home = () => {
 
   const [loading, setLoading] = useState(false)
 
-  const queryForImages = (query, pageNumber) => {
+  const queryForImages = (query, pageNumber = 1) => {
     setLoading(true)
     getPixabaySearch(query, pageNumber)
       .then((response) => {
@@ -31,6 +31,7 @@ const Home = () => {
         setSearchQuery(query)
         setSearchResults(results)
         setTotalPageNumber(totalHits / 20)
+        setPageNumber(pageNumber)
       }
     )
   }
@@ -38,12 +39,10 @@ const Home = () => {
   // Pagination for navigating through search results and querying for the next page
   const onPreviousClick = () => {
     queryForImages(searchQuery, pageNumber - 1)
-    setPageNumber(pageNumber - 1)
   }
 
   const onNextClick = () => {
     queryForImages(searchQuery, pageNumber + 1)
-    setPageNumber(pageNumber + 1)
   }
 
   return (
