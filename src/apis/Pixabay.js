@@ -7,7 +7,7 @@ const refineSearchQuery = (searchQuery) => {
 }
 
 // Get search results from Pixabay API
-export const getPixabaySearch = async (searchQuery, page=1) => {
+export const getPixabaySearch = async (searchQuery, page) => {
     const refinedSearchQuery = refineSearchQuery(searchQuery)
     const queryParams = {
         key: PIXABAY_KEY,
@@ -15,7 +15,20 @@ export const getPixabaySearch = async (searchQuery, page=1) => {
         safesearch: true,
         page: page,
     }
-    const response = await axios.get("https://pixabay.com/api/", { params: queryParams });
+    let response;
+    try {
+        response = await axios.get("https://pixabay.com/api/", { params: queryParams });
+    } catch (error) {
+        if (error.response) {
+            console.log('Response status:', error.response.status);
+            console.log('Response data:', error.response.data);
+        } else if (error.request) {
+            console.log('No response received:', error.request);
+        } else {
+            console.log('Error:', error.message);
+        }
+          return {results: [], totalHits: 0};
+    }
 
     return {results: response.data.hits, totalHits: response.data.totalHits};
 };
@@ -26,6 +39,21 @@ export const getPixabayImage = async (imageId) => {
         key: PIXABAY_KEY,
         id: imageId,
     }
-    const response = await axios.get("https://pixabay.com/api/", { params: queryParams });
+
+    let response;
+    try {
+        response = await axios.get("https://pixabay.com/api/", { params: queryParams });
+    } catch (error) {
+        if (error.response) {
+            console.log('Response status:', error.response.status);
+            console.log('Response data:', error.response.data);
+        } else if (error.request) {
+            console.log('No response received:', error.request);
+        } else {
+            console.log('Error:', error.message);
+        }
+          return null;
+    }
+
     return response.data.hits[0];
 };
